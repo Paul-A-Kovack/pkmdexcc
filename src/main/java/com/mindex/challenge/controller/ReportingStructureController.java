@@ -1,0 +1,39 @@
+package com.mindex.challenge.controller;
+
+import com.mindex.challenge.data.ReportingStructure;
+import com.mindex.challenge.service.ReportingStructureService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * Provides an API to retrieve {@link ReportingStructure} data for employees.
+ */
+@RestController
+public class ReportingStructureController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ReportingStructureController.class);
+
+    private final ReportingStructureService reportingStructureService;
+
+    @Autowired
+    public ReportingStructureController(ReportingStructureService reportingStructureService) {
+        this.reportingStructureService = reportingStructureService;
+    }
+
+    /**
+     * Retrieve the {@link ReportingStructure} for a specific employee.
+     *
+     * @param id the employee id.
+     * @return the {@link ReportingStructure} for that employee.
+     */
+    @GetMapping("/reporting-structure/{id}")
+    public ReportingStructure read(@PathVariable String id) {
+        LOG.debug("Received ReportingStructure read request for id [{}]", id);
+
+        return reportingStructureService.read(id);
+    }
+}
