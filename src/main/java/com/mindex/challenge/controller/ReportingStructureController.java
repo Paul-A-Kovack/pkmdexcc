@@ -27,13 +27,13 @@ public class ReportingStructureController {
     /**
      * Retrieve the {@link ReportingStructure} for a specific employee.
      *
-     * @param id the employee id.
+     * @param employeeId the employee id.
      * @return the {@link ReportingStructure} for that employee.
      */
-    @GetMapping("/reporting-structure/{id}")
-    public ReportingStructure read(@PathVariable String id) {
-        LOG.debug("Received ReportingStructure read request for id [{}]", id);
+    @GetMapping("/reporting-structures/{employeeId}")
+    public ReportingStructure read(@PathVariable String employeeId) {
+        LOG.debug("Received ReportingStructure read request for employee id [{}]", employeeId);
 
-        return reportingStructureService.read(id);
+        return reportingStructureService.read(employeeId);
     }
 }

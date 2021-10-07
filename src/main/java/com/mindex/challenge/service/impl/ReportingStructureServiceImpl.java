@@ -31,10 +31,10 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
      * {@inheritDoc}
      */
     @Override
-    public ReportingStructure read(String id) {
-        LOG.debug("Finding ReportingStructure for employee with id [{}]", id);
+    public ReportingStructure read(String employeeId) {
+        LOG.debug("Finding ReportingStructure for employee with id [{}]", employeeId);
 
-        Employee employee = employeeService.read(id);
+        Employee employee = employeeService.read(employeeId);
 
         ReportingStructure reportingStructure = new ReportingStructure();
         reportingStructure.setEmployee(employee);
